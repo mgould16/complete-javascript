@@ -86,35 +86,47 @@ if (mark_bmi > john_bmi) {
 
 
 
-// var tipArray = [125, 48, 268]
+var tipArray = []
+var tips = function(bill) {
+  if (bill < 50) {
+    tip = bill * 0.2;
+    tipArray.push(tip);
+    return tipArray;
+  }
+  else {
+    return "no se";
+  }
+};
+
+console.log(tips(40));
+console.log(tips(5));
+
+var tipCalculator = function(bill) {
+  var percentage;
+  if (bill < 50) {
+    percentage = 0.2;
+  } else if (bill >= 50 && bill < 200) {
+    percentage = 0.15;
+  } else {
+    percentage =  0.1;
+  }
+  return percentage * bill
+}
+
+var tips = [tipCalculator(tipArray[0]),
+            tipCalculator(tipArray[1]),
+            tipCalculator(tipArray[2])];
+
+console.log(tips);
+
+var final_amount = [tips[0] + tipArray[0],
+                   tips[1] + tipArray[1],
+                   tips[2] + tipArray[2]];
 
 
-// var tipCalculator = function(bill) {
-//   var percentage;
-//   if (bill < 50) {
-//     percentage = 0.2;
-//   } else if (bill >= 50 && bill < 200) {
-//     percentage = 0.15;
-//   } else {
-//     percentage =  0.1;
-//   }
-//   return percentage * bill
-// }
-
-// var tips = [tipCalculator(tipArray[0]),
-//             tipCalculator(tipArray[1]),
-//             tipCalculator(tipArray[2])];
-
-// console.log(tips);
-
-// var final_amount = [tips[0] + tipArray[0],
-//                    tips[1] + tipArray[1],
-//                    tips[2] + tipArray[2]];
 
 
-
-
-// console.log(final_amount);
+console.log(final_amount);
 
 // Let's remember the first coding challenge where Mark and John compared their BMIs.
 // Let's now implement the same functionality with objects and methods.
