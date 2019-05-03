@@ -51,7 +51,10 @@ document.querySelector('.dice').style.display = 'none';
 
 document.querySelector(".btn-roll").addEventListener('click', function() {
   if (gamePlaying) {
+    var array = [];
     var dice = Math.floor((Math.random() * 6) + 1)
+    array.push(dice);
+    var lastArray = array[array.length - 1];
     // display result
     var diceDOM = document.querySelector('.dice');
     diceDOM.style.display = "block";
@@ -59,6 +62,11 @@ document.querySelector(".btn-roll").addEventListener('click', function() {
     if (dice != 1) {
       roundScore += dice;
       document.querySelector('#current-' + activePlayer).textContent = roundScore;
+    } else if (dice == 6 && lastArray == 6){
+      //  logic will reset player score if 2 sixes are rolled in a row
+      scores[activePlayer] = 0;
+      document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+      nextPlayer();
     } else {
       nextPlayer();
     };
@@ -93,4 +101,5 @@ document.querySelector(".btn-new").addEventListener("click", init);
 // insert html
 // document.querySelector("#current-" + activePlayer).innerHTML = '<em>' dice '</em>';
 
-
+//  if a player rolls 2 6's in a row, he loses his entire score and it is the next person's go
+// I must save the previous dice roll score.
